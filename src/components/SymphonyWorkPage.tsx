@@ -82,7 +82,7 @@ export const SymphonyWorkPage: React.FC<SymphonyWorkPageProps> = ({ onBack }) =>
           <figure className="w-56 sm:w-64 md:w-72 shrink-0 mx-auto sm:mx-0 p-2.5 bg-white border-2 border-stone-300 rounded shadow-md text-center">
             <div className="overflow-hidden rounded border border-stone-300 bg-stone-900 aspect-[240/110]">
               <img
-                src="/assets/aistudio/symphony_cover_straight.jpg"
+                src={`${import.meta.env.BASE_URL}assets/aistudio/symphony_cover_straight.jpg`}
                 alt="Symphony in B. Flat — Walter Macfarren 1879 score cover"
                 className="w-full h-full object-cover"
               />
@@ -107,11 +107,11 @@ export const SymphonyWorkPage: React.FC<SymphonyWorkPageProps> = ({ onBack }) =>
             <figure className="w-full sm:w-auto max-w-sm p-2.5 bg-white border-2 border-stone-300 rounded shadow-xs text-center shrink-0">
               <div
                 className="overflow-hidden rounded border border-stone-300 bg-stone-100 cursor-pointer group relative"
-                onClick={() => setActiveImageModal('/assets/aistudio/symphony_dates.jpg')}
+                onClick={() => setActiveImageModal(`${import.meta.env.BASE_URL}assets/aistudio/symphony_dates.jpg`)}
                 title="Click to enlarge autograph score dates"
               >
                 <img
-                  src="/assets/aistudio/symphony_dates.jpg"
+                  src={`${import.meta.env.BASE_URL}assets/aistudio/symphony_dates.jpg`}
                   alt="Inside cover of autograph score recording performance dates in Walter Macfarren's hand"
                   className="w-full max-w-[320px] h-auto object-contain mx-auto group-hover:scale-[1.01] transition-transform duration-200"
                 />

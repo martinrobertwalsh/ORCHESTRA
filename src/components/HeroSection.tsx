@@ -14,7 +14,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ activeTab, onTabChange
         {/* Background Queen's Hall Photo (object-bottom anchors the bottom, cropping strictly from top) */}
         <div className="absolute inset-0">
           <img
-            src="/assets/aistudio/queens_hall_clean.jpg"
+            src={`${import.meta.env.BASE_URL}assets/aistudio/queens_hall_clean.jpg`}
             alt="Queen's Hall, Langham Place, London - The lost acoustic heart of the British Musical Renaissance and the Proms, before its destruction in May 1941"
             className="w-full h-full object-cover object-bottom filter brightness-125 contrast-105"
             referrerPolicy="no-referrer"

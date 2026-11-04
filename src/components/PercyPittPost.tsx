@@ -50,7 +50,7 @@ export const PercyPittPost: React.FC = () => {
           <figure className="w-40 sm:w-44 md:w-48 shrink-0 mx-auto sm:mx-0 p-2.5 bg-white border-2 border-stone-300 rounded shadow-md text-center">
             <div className="overflow-hidden rounded border border-stone-300 bg-stone-100 aspect-3/4">
               <img
-                src="/assets/aistudio/percy_pitt_sharp.jpg"
+                src={`${import.meta.env.BASE_URL}assets/aistudio/percy_pitt_sharp.jpg`}
                 alt="Percy Pitt (1869–1932) - English composer, conductor, Director of Music at Covent Garden and the BBC"
                 className="w-full h-full object-cover object-top filter contrast-105"
                 referrerPolicy="no-referrer"
@@ -122,11 +122,11 @@ export const PercyPittPost: React.FC = () => {
               {/* Autograph Musical Joke Excerpt */}
               <div
                 className="my-4 cursor-pointer group"
-                onClick={() => setActiveImageModal('/assets/aistudio/elgar_joke_v2.jpg')}
+                onClick={() => setActiveImageModal(`${import.meta.env.BASE_URL}assets/aistudio/elgar_joke_v2.jpg`)}
                 title="Click to enlarge autograph excerpt"
               >
                 <img
-                  src="/assets/aistudio/elgar_joke_v2.jpg"
+                  src={`${import.meta.env.BASE_URL}assets/aistudio/elgar_joke_v2.jpg`}
                   alt="Autograph musical joke quotation from Percy Pitt to Edward Elgar"
                   className="max-w-md w-full h-auto rounded border border-stone-300 shadow-xs filter contrast-105 group-hover:scale-[1.01] transition-transform"
                   referrerPolicy="no-referrer"
@@ -283,11 +283,11 @@ export const PercyPittPost: React.FC = () => {
             <figure className="w-40 sm:w-48 md:w-52 shrink-0 mx-auto sm:mx-0 p-2.5 bg-white border-2 border-stone-300 rounded shadow-md text-center">
               <div
                 className="overflow-hidden rounded border border-stone-300 bg-stone-100 aspect-3/4 cursor-pointer group relative"
-                onClick={() => setActiveImageModal('/assets/aistudio/cover_a9587caf.jpg')}
+                onClick={() => setActiveImageModal(`${import.meta.env.BASE_URL}assets/aistudio/cover_a9587caf.jpg`)}
                 title="Click to enlarge Full Score title page"
               >
                 <img
-                  src="/assets/aistudio/cover_a9587caf.jpg"
+                  src={`${import.meta.env.BASE_URL}assets/aistudio/cover_a9587caf.jpg`}
                   alt="Percy Pitt - Coronation March Op. 21 Full Score Novello title page"
                   className="w-full h-full object-cover object-top group-hover:scale-102 transition-transform duration-200"
                 />

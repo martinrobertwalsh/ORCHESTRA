@@ -54,7 +54,7 @@ export const ResearchLedger: React.FC<ResearchLedgerProps> = ({ onSearchComposer
 
           <div className="rounded border border-stone-200 overflow-hidden bg-stone-50 max-h-96 overflow-y-auto">
             <img
-              src="/assets/aistudio/image_12fa9c82.png"
+              src={`${import.meta.env.BASE_URL}assets/aistudio/image_12fa9c82.png`}
               alt="Martin Walsh research archive directory showing folders for Hamilton Clarke, Learmont Drysdale, Jane Joseph, Ebenezer Prout, and others"
               className="w-full h-auto block"
               referrerPolicy="no-referrer"

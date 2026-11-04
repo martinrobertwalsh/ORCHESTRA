@@ -70,7 +70,7 @@ export const ArchiveTab: React.FC = () => {
           <div className="p-5 bg-stone-100/70 border-b border-stone-200/80 flex justify-start items-center">
             <div className="w-40 sm:w-44 aspect-3/4 overflow-hidden rounded border border-stone-300 bg-white shadow-xs">
               <img
-                src="/assets/aistudio/photo_200faca6.jpg"
+                src={`${import.meta.env.BASE_URL}assets/aistudio/photo_200faca6.jpg`}
                 alt="Walter Macfarren (1826–1905)"
                 className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-102"
               />
