@@ -1,0 +1,8 @@
+{
+  "name": "Forgotten Composers: British Orchestral Music 1850–1950",
+  "description": "An archival treasury resurrecting neglected orchestral masterworks, forgotten British symphonists, and lost scores from 1850 to 1950.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
