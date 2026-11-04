@@ -215,7 +215,7 @@ export const FeaturedPost: React.FC = () => {
                 controls
                 preload="metadata"
                 className="w-full h-11 accent-amber-900 rounded focus:outline-none shadow-2xs"
-                src="/assets/audio/macfarren_symphony_in_bb.mp3"
+                src={`${import.meta.env.BASE_URL}assets/audio/macfarren_symphony_in_bb.mp3`}
               >
                 Your browser does not support the audio element.
               </audio>
