@@ -4,8 +4,9 @@ import path from 'path';
 import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
+  const repository = process.env.GITHUB_REPOSITORY?.split('/')[1] ?? 'ORCHESTRA';
   return {
-    base: '/ORCHESTRA/',
+    base: '/' + repository + '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
