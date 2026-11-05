@@ -1,11 +1,21 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { MACFARREN_ORCHESTRAL_WORKS } from '../data/macfarrenData';
 import { ZoomIn, Calendar, X, ArrowUp, Volume2 } from 'lucide-react';
 
 export const FeaturedPost: React.FC = () => {
   const [activeImageModal, setActiveImageModal] = useState<string | null>(null);
   const [showDatesPopup, setShowDatesPopup] = useState<boolean>(false);
+  const [activeJumpLabel, setActiveJumpLabel] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const jumpTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (jumpTimeoutRef.current) {
+        clearTimeout(jumpTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -16,18 +26,32 @@ export const FeaturedPost: React.FC = () => {
 
   const movementJumps = [
     { label: '1st mov', time: 0 },
-    { label: '2nd mov', time: 570.1 },
-    { label: '3rd mov', time: 1015.0 },
-    { label: '4th mov', time: 1226.6 },
+    { label: '2nd mov', time: 571.0 },
+    { label: '3rd mov', time: 1015.5 },
+    { label: '4th mov', time: 1227.0 },
   ];
 
-  const handleJumpToMovement = (time: number) => {
+  const handleJumpToMovement = (time: number, label: string) => {
+    if (jumpTimeoutRef.current) {
+      clearTimeout(jumpTimeoutRef.current);
+      jumpTimeoutRef.current = null;
+    }
+
     if (audioRef.current) {
+      audioRef.current.pause();
       audioRef.current.currentTime = time;
-      const playPromise = audioRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {});
-      }
+      setActiveJumpLabel(label);
+
+      // 1.5-second pause before playback begins
+      jumpTimeoutRef.current = setTimeout(() => {
+        if (audioRef.current) {
+          const playPromise = audioRef.current.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(() => {});
+          }
+        }
+        setActiveJumpLabel(null);
+      }, 1500);
     }
   };
 
@@ -70,7 +94,7 @@ export const FeaturedPost: React.FC = () => {
             <figure className="w-40 sm:w-44 md:w-48 shrink-0 mx-auto sm:mx-0 p-2.5 bg-white border-2 border-stone-300 rounded shadow-md text-center">
               <div className="overflow-hidden rounded border border-stone-300 bg-stone-100 aspect-3/4">
                 <img
-                  src={`${import.meta.env.BASE_URL}assets/aistudio/photo_200faca6.jpg`}
+                  src="/assets/aistudio/photo_200faca6.jpg"
                   alt="Walter Macfarren (1826–1905) - English composer, pianist, and professor at the Royal Academy of Music"
                   className="w-full h-full object-cover object-top"
                   referrerPolicy="no-referrer"
@@ -176,7 +200,7 @@ export const FeaturedPost: React.FC = () => {
                             </span>
                           ) : (
                             <span
-                              className="inline-flex items-center justify-center font-mono font-bold text-xs text-stone-900 bg-white w-6 h-6 rounded border border-stone-900"
+                              className="inline-flex items-center justify-center font-mono font-bold text-xs text-stone-900 bg-stone-300 w-6 h-6 rounded border border-stone-400 shadow-2xs"
                               title="Extant"
                             >
                               E
@@ -192,9 +216,16 @@ export const FeaturedPost: React.FC = () => {
 
             {/* Table Footnote with Key at bottom right */}
             <div className="bg-stone-50 px-4 sm:px-6 py-3 border-t border-stone-200 text-xs text-stone-600 flex items-center justify-end">
-              <span className="font-mono text-xs font-semibold tracking-wider uppercase text-stone-700">
-                E = EXTANT &nbsp;&nbsp;&nbsp; L = LOST
-              </span>
+              <div className="flex items-center gap-4 font-mono text-xs font-semibold tracking-wider uppercase text-stone-700">
+                <span className="inline-flex items-center gap-1.5">
+                  <span className="inline-flex items-center justify-center font-mono font-bold text-xs text-stone-900 bg-stone-300 w-5 h-5 rounded border border-stone-400">E</span>
+                  = EXTANT
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <span className="inline-flex items-center justify-center font-mono font-bold text-xs text-stone-900 bg-white w-5 h-5 rounded border border-stone-900">L</span>
+                  = LOST
+                </span>
+              </div>
             </div>
           </div>
         </section>
@@ -215,7 +246,7 @@ export const FeaturedPost: React.FC = () => {
                 controls
                 preload="metadata"
                 className="w-full h-11 accent-amber-900 rounded focus:outline-none shadow-2xs"
-                src={`${import.meta.env.BASE_URL}assets/audio/macfarren_symphony_in_bb.mp3`}
+                src="/assets/aistudio/macfarren_symphony_in_bb_45c21c49.mp3"
               >
                 Your browser does not support the audio element.
               </audio>
@@ -225,8 +256,12 @@ export const FeaturedPost: React.FC = () => {
                 {movementJumps.map((jump, idx) => (
                   <button
                     key={idx}
-                    onClick={() => handleJumpToMovement(jump.time)}
-                    className="px-4 py-1.5 bg-[#FFF8E1] hover:bg-[#FDE8B5] text-stone-900 hover:text-stone-950 border border-[#765B37] rounded shadow-2xs font-serif text-xs sm:text-sm font-semibold tracking-wider transition-all cursor-pointer active:scale-95"
+                    onClick={() => handleJumpToMovement(jump.time, jump.label)}
+                    className={`px-4 py-1.5 border border-[#765B37] rounded shadow-2xs font-serif text-xs sm:text-sm font-semibold tracking-wider transition-all cursor-pointer active:scale-95 ${
+                      activeJumpLabel === jump.label
+                        ? 'bg-[#FDE8B5] text-amber-950 ring-2 ring-[#765B37] animate-pulse'
+                        : 'bg-[#FFF8E1] hover:bg-[#FDE8B5] text-stone-900 hover:text-stone-950'
+                    }`}
                   >
                     {jump.label}
                   </button>
@@ -240,7 +275,7 @@ export const FeaturedPost: React.FC = () => {
             <figure className="w-56 sm:w-64 md:w-72 shrink-0 mx-auto sm:mx-0 p-2.5 bg-white border-2 border-stone-300 rounded shadow-md text-center">
               <div className="overflow-hidden rounded border border-stone-300 bg-stone-900 aspect-[240/110]">
                 <img
-                  src={`${import.meta.env.BASE_URL}assets/aistudio/symphony_cover_straight.jpg`}
+                  src="/assets/aistudio/symphony_cover_straight.jpg"
                   alt="Symphony in B. Flat — Walter Macfarren 1879 score cover"
                   className="w-full h-full object-cover"
                 />
@@ -310,11 +345,11 @@ export const FeaturedPost: React.FC = () => {
               <figure className="w-full sm:w-auto max-w-sm p-2.5 bg-white border-2 border-stone-300 rounded shadow-xs text-center shrink-0">
                 <div
                   className="overflow-hidden rounded border border-stone-300 bg-stone-100 cursor-pointer group relative"
-                  onClick={() => setActiveImageModal(`${import.meta.env.BASE_URL}assets/aistudio/symphony_dates.jpg`)}
+                  onClick={() => setActiveImageModal('/assets/aistudio/symphony_dates.jpg')}
                   title="Click to enlarge autograph score dates"
                 >
                   <img
-                    src={`${import.meta.env.BASE_URL}assets/aistudio/symphony_dates.jpg`}
+                    src="/assets/aistudio/symphony_dates.jpg"
                     alt="Inside cover of autograph score recording performance dates in Walter Macfarren's hand"
                     className="w-full max-w-[320px] h-auto object-contain mx-auto group-hover:scale-[1.01] transition-transform duration-200"
                   />

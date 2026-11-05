@@ -50,7 +50,7 @@ export const PercyPittPost: React.FC = () => {
           <figure className="w-40 sm:w-44 md:w-48 shrink-0 mx-auto sm:mx-0 p-2.5 bg-white border-2 border-stone-300 rounded shadow-md text-center">
             <div className="overflow-hidden rounded border border-stone-300 bg-stone-100 aspect-3/4">
               <img
-                src={`${import.meta.env.BASE_URL}assets/aistudio/percy_pitt_sharp.jpg`}
+                src="/assets/aistudio/percy_pitt_sharp.jpg"
                 alt="Percy Pitt (1869–1932) - English composer, conductor, Director of Music at Covent Garden and the BBC"
                 className="w-full h-full object-cover object-top filter contrast-105"
                 referrerPolicy="no-referrer"
@@ -100,45 +100,48 @@ export const PercyPittPost: React.FC = () => {
           </p>
 
           <p className="first-letter:text-5xl first-letter:font-bold first-letter:text-stone-900 first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-none">
-            Behind this public career was a substantial body of composition. Much of his orchestral music was heard at the Proms and was repeated in following seasons. He was a close, life-long friend of both Henry Wood and Edward Elgar. The latter he corresponded with on a regular basis, both friends sharing the ups and downs of life as a composer in Edwardian England.
+            Behind this public career Pitt amassed a substantial body of compositions. Much of his orchestral music was heard at the Proms and was repeated in following seasons. He was a close, life-long friend of both Henry Wood and Edward Elgar. The latter he corresponded with on a regular basis, both friends sharing the ups and downs of life as a composer in Edwardian England.
           </p>
 
           <p>
             A letter dated from 1902 indicates the mutual fun their friendship was providing. Pitt horribly distorts the tune which was making Elgar famous throughout the land, and accompanies the final note with a whole array of percussion.
           </p>
 
-          {/* Letter 1: Percy Pitt to Edward Elgar */}
-          <div className="my-6 p-6 sm:p-8 bg-[#FAF6EE] border-2 border-stone-300 rounded-lg shadow-xs relative">
-            <div className="absolute top-3 right-4 font-mono text-[11px] text-stone-500 uppercase tracking-wider">
-              1902 Epistolary Archive
+          {/* Letter 1: Percy Pitt to Edward Elgar - Narrower old paper sheet with shadow */}
+          <div className="my-8 max-w-xl mx-auto bg-gradient-to-b from-[#FAF6EB] via-[#F5EEDC] to-[#EFE7D2] border border-[#DCD3BD] rounded-xs shadow-[0_12px_28px_rgba(45,36,22,0.18),0_3px_8px_rgba(45,36,22,0.10)] p-6 sm:p-9 relative">
+            <div className="flex justify-between items-center border-b border-[#E1D7BF] pb-2.5 mb-5">
+              <span className="font-mono text-[10px] text-stone-500 uppercase tracking-widest font-semibold">
+                1902 Epistolary Archive
+              </span>
+              <span className="font-serif italic text-xs text-amber-950/70">
+                London
+              </span>
             </div>
-            <div className="font-serif text-stone-900 text-base sm:text-lg leading-relaxed space-y-3 pt-2">
-              <p className="font-bold text-amber-950">My dear Elgarmusdock</p>
+            <div className="font-serif text-stone-900 text-base sm:text-lg leading-relaxed space-y-3.5 pt-1">
+              <p className="font-bold text-amber-950 text-lg">My dear Elgarmusdock</p>
               <p className="italic text-stone-700">Greetings</p>
-              <p className="mt-4">
+              <p className="mt-3 text-stone-900 leading-relaxed">
                 I shall have great pleasure in joining yr. friend &amp; you, O Great Pundit, at Abendbrod [supper] on Tuesday at seven of the clock although I may, later, be obliged to go down to the theatre.
               </p>
 
-              {/* Autograph Musical Joke Excerpt */}
-              <div
-                className="my-4 cursor-pointer group"
-                onClick={() => setActiveImageModal(`${import.meta.env.BASE_URL}assets/aistudio/elgar_joke_v2.jpg`)}
-                title="Click to enlarge autograph excerpt"
-              >
-                <img
-                  src={`${import.meta.env.BASE_URL}assets/aistudio/elgar_joke_v2.jpg`}
-                  alt="Autograph musical joke quotation from Percy Pitt to Edward Elgar"
-                  className="max-w-md w-full h-auto rounded border border-stone-300 shadow-xs filter contrast-105 group-hover:scale-[1.01] transition-transform"
-                  referrerPolicy="no-referrer"
-                />
+              {/* Autograph Musical Joke Excerpt - Old Paper Look, Smaller & Non-Clickable */}
+              <div className="my-5 max-w-[280px] sm:max-w-[320px] mx-auto select-none cursor-default">
+                <div className="p-1.5 bg-[#F5ECDB] border border-[#D5CABB] rounded-xs shadow-2xs">
+                  <img
+                    src="/assets/aistudio/elgar_joke_old_paper.jpg"
+                    alt="Autograph musical joke quotation from Percy Pitt to Edward Elgar"
+                    className="w-full h-auto rounded-xs filter contrast-105 mix-blend-multiply pointer-events-none"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
               </div>
 
-              <p className="italic">
+              <p className="italic text-stone-800">
                 Don&apos;t order a brass band
               </p>
               <div className="pt-4 text-left">
-                <p className="text-stone-800">Yours always</p>
-                <p className="font-bold text-stone-900 text-lg">Percy P.</p>
+                <p className="text-stone-700 font-serif italic text-sm">Yours always</p>
+                <p className="font-bold text-stone-900 font-serif text-xl tracking-wide">Percy P.</p>
               </div>
             </div>
           </div>
@@ -147,23 +150,41 @@ export const PercyPittPost: React.FC = () => {
             And here is Elgar affirming their friendship with his own witty remark:
           </p>
 
-          {/* Letter 2: Edward Elgar to Percy Pitt */}
-          <div className="my-6 p-6 sm:p-8 bg-[#FAF6EE] border-2 border-stone-300 rounded-lg shadow-xs relative">
-            <div className="absolute top-3 right-4 font-mono text-[11px] text-stone-500 uppercase tracking-wider">
-              Edward Elgar Autograph Letter
+          {/* Letter 2: Edward Elgar to Percy Pitt - Narrower old paper sheet with shadow */}
+          <div className="my-8 max-w-xl mx-auto bg-gradient-to-b from-[#FAF6EB] via-[#F5EEDC] to-[#EFE7D2] border border-[#DCD3BD] rounded-xs shadow-[0_12px_28px_rgba(45,36,22,0.18),0_3px_8px_rgba(45,36,22,0.10)] p-6 sm:p-9 relative">
+            <div className="flex justify-between items-center border-b border-[#E1D7BF] pb-2.5 mb-5">
+              <span className="font-mono text-[10px] text-stone-500 uppercase tracking-widest font-semibold">
+                Edward Elgar Autograph Letter
+              </span>
+              <span className="font-serif italic text-xs text-amber-950/70">
+                New Year
+              </span>
             </div>
-            <div className="font-serif text-stone-900 text-base sm:text-lg leading-relaxed space-y-3 pt-2">
-              <p className="font-bold text-amber-950">Dear old Pitt.</p>
-              <p className="mt-4">
+            <div className="font-serif text-stone-900 text-base sm:text-lg leading-relaxed space-y-3.5 pt-1">
+              <p className="font-bold text-amber-950 text-lg">Dear old Pitt.</p>
+              <p className="mt-3 text-stone-900 leading-relaxed">
                 I choose this sheet because there&apos;s a woful blot on the back &amp; I cannot use it except to a familiar spirit.
               </p>
-              <p>
+              <p className="text-stone-900 leading-relaxed">
                 Best wishes for the New Year &amp; we thank you very much for yours.
               </p>
               <div className="pt-4 text-left">
-                <p className="text-stone-800">Yr affecte</p>
-                <p className="font-bold text-stone-900 text-lg">Edward Elgar</p>
+                <p className="text-stone-700 font-serif italic text-sm">Yr affecte</p>
+                <p className="font-bold text-stone-900 font-serif text-xl tracking-wide">Edward Elgar</p>
               </div>
+            </div>
+
+            {/* Authentic Ink Splatter ("Woful Blot") on Lower Right */}
+            <div
+              className="absolute -bottom-4 -right-4 sm:-bottom-2 sm:-right-2 pointer-events-none select-none"
+              title="Elgar's 'woful blot'"
+              aria-hidden="true"
+            >
+              <img
+                src="/assets/aistudio/elgar_blot_clean.png"
+                alt="Elgar's woful blot"
+                className="w-24 h-24 sm:w-28 sm:h-28 object-contain mix-blend-multiply opacity-90 pointer-events-none transform -rotate-6"
+              />
             </div>
           </div>
         </div>
@@ -232,7 +253,7 @@ export const PercyPittPost: React.FC = () => {
                             </span>
                           ) : (
                             <span
-                              className="inline-flex items-center justify-center font-mono font-bold text-xs text-stone-900 bg-white w-6 h-6 rounded border border-stone-900"
+                              className="inline-flex items-center justify-center font-mono font-bold text-xs text-stone-900 bg-stone-300 w-6 h-6 rounded border border-stone-400 shadow-2xs"
                               title="Extant"
                             >
                               E
@@ -248,9 +269,16 @@ export const PercyPittPost: React.FC = () => {
 
             {/* Table Footnote with Key at bottom right */}
             <div className="bg-stone-50 px-4 sm:px-6 py-3 border-t border-stone-200 text-xs text-stone-600 flex items-center justify-end">
-              <span className="font-mono text-xs font-semibold tracking-wider uppercase text-stone-700">
-                E = EXTANT &nbsp;&nbsp;&nbsp; L = LOST
-              </span>
+              <div className="flex items-center gap-4 font-mono text-xs font-semibold tracking-wider uppercase text-stone-700">
+                <span className="inline-flex items-center gap-1.5">
+                  <span className="inline-flex items-center justify-center font-mono font-bold text-xs text-stone-900 bg-stone-300 w-5 h-5 rounded border border-stone-400">E</span>
+                  = EXTANT
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <span className="inline-flex items-center justify-center font-mono font-bold text-xs text-stone-900 bg-white w-5 h-5 rounded border border-stone-900">L</span>
+                  = LOST
+                </span>
+              </div>
             </div>
           </div>
         </section>
@@ -283,11 +311,11 @@ export const PercyPittPost: React.FC = () => {
             <figure className="w-40 sm:w-48 md:w-52 shrink-0 mx-auto sm:mx-0 p-2.5 bg-white border-2 border-stone-300 rounded shadow-md text-center">
               <div
                 className="overflow-hidden rounded border border-stone-300 bg-stone-100 aspect-3/4 cursor-pointer group relative"
-                onClick={() => setActiveImageModal(`${import.meta.env.BASE_URL}assets/aistudio/cover_a9587caf.jpg`)}
+                onClick={() => setActiveImageModal('/assets/aistudio/cover_a9587caf.jpg')}
                 title="Click to enlarge Full Score title page"
               >
                 <img
-                  src={`${import.meta.env.BASE_URL}assets/aistudio/cover_a9587caf.jpg`}
+                  src="/assets/aistudio/cover_a9587caf.jpg"
                   alt="Percy Pitt - Coronation March Op. 21 Full Score Novello title page"
                   className="w-full h-full object-cover object-top group-hover:scale-102 transition-transform duration-200"
                 />
@@ -302,18 +330,25 @@ export const PercyPittPost: React.FC = () => {
               </figcaption>
             </figure>
 
-            <div className="flex-1 font-serif text-stone-800 text-lg sm:text-xl leading-relaxed pt-1 space-y-4">
-              <p className="first-letter:text-5xl first-letter:font-bold first-letter:text-stone-900 first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-none">
-                Despite being given the title &ldquo;Coronation March&rdquo; this work was written specifically for Queen Victoria’s Diamond Jubilee in 1897 and it achieved a measure of success. It was first performed in 1896 at a Prom concert at the Queens Hall under Henry Wood. It&apos;s not in the classic, clearly defined ABA shape of Elgar&apos;s Pomp and Circumstance March for example. Instead Pitt begins gently and builds to climaxes often. At the end he chooses to take the slow legato theme and score it passionately for unison strings. This departure from the norm left the reviewers somewhat perplexed.
+            <div className="flex-1 font-serif text-stone-800 text-lg sm:text-xl leading-relaxed pt-1 space-y-4 text-left">
+              <p className="text-left first-letter:text-5xl first-letter:font-bold first-letter:text-stone-900 first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-none">
+                Despite being given the title &ldquo;Coronation March&rdquo; this work was written specifically for Queen Victoria’s Diamond Jubilee in 1897 and it achieved a measure of success. It was first performed in 1896 at a Prom concert at the Queens Hall under Henry Wood.
               </p>
-              <p>
-                The Times reviewed the concert on the night of the 23rd September which clearly kicked off to a rousing, patriotic start:
+              <p className="text-left">
+                It&apos;s not in the classic, clearly defined ABA shape of marches such as Elgar&apos;s Pomp and Circumstance where a brisk lively first section is followed by a contrasting slower part with a sustained legato melody and then a da capo of the opening. Pitt chooses to begin softly and gradually build the music through a series of gradual crescendos.
               </p>
             </div>
           </div>
 
-          {/* Narrative & Reviews continued below */}
+          {/* Narrative & Reviews continued below - Flush to left side of page */}
           <div className="font-serif text-stone-800 text-lg sm:text-xl leading-relaxed space-y-6 mt-6 text-left">
+            <p className="text-left">
+              At the end he takes the slow legato theme and scores it passionately for unison strings. This departure from the norm left the reviewers, and no doubt the audience, somewhat perplexed.
+            </p>
+
+            <p className="text-left">
+              The premiere took place on the night of 23rd September. The concert clearly began with a rousing outpouring of patriotic fervour:
+            </p>
 
             {/* Review 1: The Times - Opening atmosphere */}
             <blockquote className="my-8 p-6 sm:p-8 bg-white border-l-4 border-amber-800 border-y border-r border-stone-200 rounded-r shadow-xs space-y-4">
@@ -354,6 +389,28 @@ export const PercyPittPost: React.FC = () => {
             <p>
               However, over time it became a favourite and was performed again the next year and then in 1900 and 1919, all at Queens Hall prom concerts.
             </p>
+
+            {/* Queen's Hall Orchestra Archival Photograph - Half Size */}
+            <figure className="my-8 max-w-md mx-auto bg-white border border-stone-200/90 rounded-lg p-2.5 sm:p-3 shadow-xs">
+              <div
+                className="overflow-hidden rounded border border-stone-300 bg-stone-950 relative group cursor-pointer"
+                onClick={() => setActiveImageModal('/assets/aistudio/hall_slight_plus_89dff31e.png')}
+                title="Click to enlarge photograph"
+              >
+                <img
+                  src="/assets/aistudio/hall_slight_plus_89dff31e.png"
+                  alt="Henry Wood and the Queen's Hall Orchestra on stage at Queen's Hall"
+                  className="w-full h-auto object-cover filter contrast-105 group-hover:scale-[1.01] transition-transform duration-300"
+                />
+                <div className="absolute bottom-2 right-2 bg-stone-900/80 hover:bg-stone-900 text-white p-1.5 rounded text-xs flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ZoomIn className="w-3.5 h-3.5" />
+                  <span className="font-sans text-[11px]">Enlarge</span>
+                </div>
+              </div>
+              <figcaption className="mt-2.5 text-center font-serif text-xs sm:text-sm text-stone-600 italic">
+                Henry Wood&apos;s long-running Proms orchestra was the Queen&apos;s Hall Orchestra, which he founded in 1895.
+              </figcaption>
+            </figure>
           </div>
         </section>
 

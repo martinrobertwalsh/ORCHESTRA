@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface HeroSectionProps {
-  activeTab: 'home' | 'welcome' | 'archive' | 'contact';
-  onTabChange: (tab: 'home' | 'welcome' | 'archive' | 'contact') => void;
+  activeTab: 'home' | 'welcome' | 'to-follow' | 'archive' | 'contact';
+  onTabChange: (tab: 'home' | 'welcome' | 'to-follow' | 'archive' | 'contact') => void;
   onOpenWelcome: () => void;
 }
 
@@ -45,7 +45,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ activeTab, onTabChange
         </div>
       </section>
 
-      {/* 4 Buttons Directly Under Image: HOME · WELCOME · ARCHIVE · CONTACT (Original Archival Ivory Styling) */}
+      {/* Buttons Directly Under Image: HOME · WELCOME · TO FOLLOW · ARCHIVE · CONTACT */}
       <nav className="w-full bg-[#FAF8F5] border-y border-stone-300 py-3 sm:py-3.5 px-4 sticky top-0 z-40 shadow-xs backdrop-blur-sm">
         <div className="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 md:gap-6">
           <button
@@ -63,6 +63,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ activeTab, onTabChange
             className="min-h-[44px] px-6 sm:px-8 py-2.5 rounded font-serif text-xs sm:text-sm font-bold tracking-widest uppercase transition-all cursor-pointer bg-white text-stone-700 hover:bg-stone-100 hover:text-stone-950 border border-stone-300 shadow-2xs"
           >
             WELCOME
+          </button>
+          <button
+            onClick={() => onTabChange('to-follow')}
+            className={`min-h-[44px] px-6 sm:px-8 py-2.5 rounded font-serif text-xs sm:text-sm font-bold tracking-widest uppercase transition-all cursor-pointer ${
+              activeTab === 'to-follow'
+                ? 'bg-stone-900 text-stone-50 shadow-sm border border-stone-900 ring-1 ring-stone-900/30'
+                : 'bg-white text-stone-700 hover:bg-stone-100 hover:text-stone-950 border border-stone-300 shadow-2xs'
+            }`}
+          >
+            TO FOLLOW
           </button>
           <button
             onClick={() => onTabChange('archive')}

@@ -1,0 +1,375 @@
+import React, { useState, useRef } from 'react';
+import { ARTHUR_HERVEY_ORCHESTRAL_WORKS } from '../data/herveyData';
+import { Volume2, ArrowUp, ZoomIn, X } from 'lucide-react';
+
+export const ArthurHerveyPost: React.FC = () => {
+  const [activeImageModal, setActiveImageModal] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const seekAudio = (seconds: number) => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = seconds;
+      audioRef.current.play().catch(() => {
+        // Autoplay policy fallback
+      });
+    }
+  };
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  return (
+    <article id="arthur-hervey-post" className="w-full bg-[#FAF8F5] text-stone-900 py-12 px-4 sm:px-6 lg:px-8 selection:bg-amber-200 selection:text-stone-900">
+      <div className="max-w-4xl mx-auto">
+        {/* Header Bar: Featured Post label on left, Jump to Audio right-justified on same level */}
+        <div className="flex items-center justify-between mb-3">
+          <span className="font-mono text-xs sm:text-sm font-semibold tracking-widest text-stone-600 uppercase">
+            FEATURED POST
+          </span>
+
+          <button
+            type="button"
+            onClick={() => scrollToSection('hervey-summer-workpage')}
+            className="inline-flex items-center gap-1.5 font-mono text-xs sm:text-sm font-semibold tracking-widest text-stone-600 hover:text-amber-900 uppercase transition-colors cursor-pointer group"
+            title="Jump to audio"
+          >
+            <span>JUMP TO AUDIO</span>
+            <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-900 group-hover:scale-110 transition-transform" />
+          </button>
+        </div>
+
+        {/* Post Title */}
+        <header className="text-center mb-8 pb-6 border-b border-stone-200">
+          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-stone-900 mb-3">
+            Arthur Hervey (1855–1922)
+          </h1>
+
+          {/* Subtitle / Quote */}
+          <p className="font-serif italic text-xl sm:text-2xl text-amber-950 max-w-2xl mx-auto leading-relaxed mt-3">
+            &ldquo;Writer, critic, promoter and composer&rdquo;
+          </p>
+        </header>
+
+        {/* Section 1: Biography */}
+        <section id="hervey-bio">
+          {/* Arthur Hervey Photo on Left & First Paragraph to Right */}
+          <div className="my-8 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
+            <figure className="w-40 sm:w-44 md:w-48 shrink-0 mx-auto sm:mx-0 p-2.5 bg-white border-2 border-stone-300 rounded shadow-md text-center">
+              <div
+                className="overflow-hidden rounded border border-stone-300 bg-stone-100 aspect-3/4 cursor-pointer group relative"
+                onClick={() => setActiveImageModal('/assets/aistudio/arthur_hervey_portrait.jpg')}
+                title="Click to enlarge Arthur Hervey portrait"
+              >
+                <img
+                  src="/assets/aistudio/arthur_hervey_portrait.jpg"
+                  alt="Arthur Hervey (1855–1922)"
+                  className="w-full h-full object-cover object-top filter grayscale group-hover:scale-102 transition-transform duration-200"
+                />
+                <div className="absolute inset-0 bg-stone-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="bg-stone-900/90 text-white text-xs px-2.5 py-1 rounded-full flex items-center gap-1 font-sans">
+                    <ZoomIn className="w-3.5 h-3.5" /> Enlarge
+                  </span>
+                </div>
+              </div>
+              <figcaption className="mt-2.5 font-serif font-bold text-stone-900 text-sm sm:text-base tracking-wide">
+                Arthur Hervey
+              </figcaption>
+            </figure>
+
+            <div className="flex-1 font-serif text-stone-800 text-lg sm:text-xl leading-relaxed pt-1 space-y-4 text-left">
+              <p className="first-letter:text-5xl first-letter:font-bold first-letter:text-stone-900 first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-none">
+                Hervey was born in Paris to Irish parents who were rich landowners in Ireland. The actual family name was Harvey but for some reason Arthur chose to change his surname to Hervey. The family seat had been at Killiane Castle, Wexford since the mid 17th century. However, as time went by, the Harveys increasingly became absentee landlords. They leased the land to their tenants. Both the condition of the castle and the size of the estate materially diminished during the late 19th century and the family considered Killiane Castle too damp to stay in, especially during the winter. In 1908 the property was sold.
+              </p>
+            </div>
+          </div>
+
+          {/* Killiane Castle Figure & Travel/Education Paragraphs */}
+          <div className="my-8 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
+            <figure className="w-full sm:w-72 md:w-80 shrink-0 mx-auto sm:mx-0 p-2.5 bg-white border-2 border-stone-300 rounded shadow-md text-center">
+              <div
+                className="overflow-hidden rounded border border-stone-300 bg-stone-100 aspect-[16/9] cursor-pointer group relative"
+                onClick={() => setActiveImageModal('/assets/aistudio/killiane_castle.jpg')}
+                title="Click to enlarge Killiane Castle"
+              >
+                <img
+                  src="/assets/aistudio/killiane_castle.jpg"
+                  alt="Killiane Castle, Wexford"
+                  className="w-full h-full object-cover filter grayscale group-hover:scale-102 transition-transform duration-200"
+                />
+                <div className="absolute inset-0 bg-stone-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="bg-stone-900/90 text-white text-xs px-2.5 py-1 rounded-full flex items-center gap-1 font-sans">
+                    <ZoomIn className="w-3.5 h-3.5" /> Enlarge
+                  </span>
+                </div>
+              </div>
+              <figcaption className="mt-2 text-xs font-serif text-stone-600 italic">
+                Killiane Castle
+              </figcaption>
+            </figure>
+
+            <div className="flex-1 font-serif text-stone-800 text-lg sm:text-xl leading-relaxed pt-1 space-y-4 text-left">
+              <p>
+                Being a family of considerable wealth facilitated their travels across Europe and they enjoyed cultural pursuits such as music and literature. This privileged background shaped Hervey&apos;s formative years before the family relocated to England.
+              </p>
+              <p>
+                Arthur was educated at the Oratory, Birmingham, and studied privately in London with Berthold Tours and Edouard Marlois, two organist-composers with a French background.
+              </p>
+            </div>
+          </div>
+
+          {/* Biographical Narrative Continued */}
+          <div className="font-serif text-stone-800 text-lg sm:text-xl leading-relaxed space-y-6 mt-6 text-left">
+            <p>
+              He spent fairly equal time as both a composer and writer, principally biographical studies of composers, most of which were devoted to French contemporaries like Saint-Saëns and Bruneau. He was widely regarded as an expert on French music. As music critic for <em>Vanity Fair</em> from 1889 to 1892 and subsequently for <em>The Morning Post</em> from 1892 to 1908, Hervey penned weekly columns and concert reviews that promoted emerging European talent to British audiences.
+            </p>
+
+            {/* Plaque Row */}
+            <div className="my-8 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start p-6 bg-white border-2 border-stone-300 rounded-lg shadow-xs">
+              <figure className="w-32 shrink-0 mx-auto sm:mx-0 text-center">
+                <div
+                  className="overflow-hidden rounded border border-stone-300 bg-stone-100 aspect-square cursor-pointer group relative"
+                  onClick={() => setActiveImageModal('/assets/aistudio/hervey_plaque.jpg')}
+                  title="Click to enlarge Hervey Plaque"
+                >
+                  <img
+                    src="/assets/aistudio/hervey_plaque.jpg"
+                    alt="Arthur Hervey carved marble relief portrait at Royal Academy of Music"
+                    className="w-full h-full object-cover filter grayscale group-hover:scale-102 transition-transform duration-200"
+                  />
+                  <div className="absolute inset-0 bg-stone-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="bg-stone-900/90 text-white text-[10px] px-2 py-0.5 rounded-full flex items-center gap-1 font-sans">
+                      <ZoomIn className="w-3 h-3" /> Enlarge
+                    </span>
+                  </div>
+                </div>
+                <figcaption className="mt-1.5 text-xs font-serif text-stone-600 italic">
+                  Hervey Plaque
+                </figcaption>
+              </figure>
+
+              <div className="flex-1 font-serif text-stone-800 text-base sm:text-lg leading-relaxed space-y-3">
+                <p>
+                  His stepdaughter, Nancy Webster, left a bequest to the Royal Academy of Music in 1959 even though Hervey had no official connection to the college. The academy uses this funding to award the annual Arthur Hervey Scholarship (or Prize) to support outstanding young composition and performance students during their studies. A carved marble relief portrait celebrating his legacy was donated to the RAM collection and is kept in the Royal Academy of Music Museum.
+                </p>
+              </div>
+            </div>
+
+            <p>
+              As a composer he wrote quite extensively for orchestra, mainly in the genre of tone poems.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 2: Orchestral Work List */}
+        <section className="mt-14 pt-8 border-t-2 border-stone-300/70">
+          <div className="mb-4 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900">
+              Orchestral work list:
+            </h2>
+            <div className="text-right">
+              <span className="font-serif text-xs sm:text-sm uppercase tracking-wider font-semibold text-stone-700">
+                WORKS IN <span className="text-[#B8860B] font-bold">GOLD</span> ARE LINKS TO THEIR WORK PAGES
+              </span>
+            </div>
+          </div>
+
+          {/* Works Table */}
+          <div className="bg-white border-2 border-stone-300 rounded-lg shadow-sm overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="bg-[#2A2621] text-stone-200 font-serif text-sm tracking-wider uppercase border-b border-stone-300">
+                    <th className="py-3 px-4 sm:px-6 font-semibold">Work</th>
+                    <th className="py-3 px-4 sm:px-6 font-semibold text-right">Date</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-stone-200 text-sm font-sans">
+                  {ARTHUR_HERVEY_ORCHESTRAL_WORKS.map((work) => (
+                    <tr key={work.id} className="hover:bg-amber-50/60 transition-colors">
+                      <td className="py-3.5 px-4 sm:px-6">
+                        {work.hasDedicatedPage ? (
+                          <button
+                            onClick={() => scrollToSection('hervey-summer-workpage')}
+                            className="text-left font-serif text-lg sm:text-xl text-[#B8860B] hover:text-[#D4AF37] font-bold transition-all cursor-pointer"
+                            title="Click to view Summer work page"
+                          >
+                            {work.title}
+                          </button>
+                        ) : (
+                          <span className="font-serif text-base sm:text-lg text-stone-900 font-semibold">
+                            {work.title}
+                          </span>
+                        )}
+                      </td>
+                      <td className="py-3.5 px-4 sm:px-6 font-mono text-xs sm:text-sm text-stone-700 text-right whitespace-nowrap">
+                        {work.date}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: Work Page — Summer: Tone Poem */}
+        <section id="hervey-summer-workpage" className="mt-14 pt-8 border-t-2 border-stone-300/70 scroll-mt-20">
+          <div className="text-center mb-8 pb-6 border-b border-stone-200">
+            <span className="font-mono text-xs sm:text-sm font-semibold tracking-widest text-amber-900 uppercase block mb-1">
+              WORK PAGE
+            </span>
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 mb-4">
+              Arthur Hervey &mdash; Summer (Tone Poem)
+            </h2>
+
+            {/* Audio Box */}
+            <div className="max-w-xl mx-auto mt-3 p-4 bg-white border-2 border-stone-300 rounded-lg shadow-xs">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mb-2">
+                <span className="font-serif font-bold text-sm tracking-wider uppercase text-[#8b1e22]">
+                  SUMMER - TONE POEM (1907)
+                </span>
+                <span className="font-mono text-xs text-stone-500">
+                  Cardiff Festival Commission
+                </span>
+              </div>
+              <audio
+                ref={audioRef}
+                controls
+                preload="metadata"
+                className="w-full h-11 accent-amber-900 rounded focus:outline-none"
+                src="https://raw.githubusercontent.com/martinrobertwalsh/MP3FreddieWalsh/main/Hervey/Summer.mp3"
+              >
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+          </div>
+
+          {/* Narrative Flow & Contemporary Reviews */}
+          <div className="font-serif text-stone-800 text-lg sm:text-xl leading-relaxed space-y-6 mt-6 text-left">
+            <p className="first-letter:text-5xl first-letter:font-bold first-letter:text-stone-900 first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-none">
+              This is arguably Hervey&apos;s finest orchestral work. It comes five years after the <em>Two Tone Pictures</em> and the Concert Overture <em>Youth</em>. It was one of a series of commissions from the Cardiff Festival and it was first performed on the opening day, 25th September, 1907. The London Symphony Orchestra was conducted by Frederic Cowen.
+            </p>
+
+            <p>
+              The work starts gently and builds to a glorious climax with bright, dazzling fanfare like flourishes. A storm begins{' '}
+              <button
+                type="button"
+                onClick={() => seekAudio(200)}
+                className="whitespace-nowrap font-['Arial',sans-serif] text-[0.78em] font-semibold text-amber-900 hover:text-amber-700 transition-colors cursor-pointer align-baseline"
+                title="Jump to 03:20 in Summer audio"
+              >
+                (03:20)
+              </button>{' '}
+              to stir but it&apos;s not an over-dramatic storm portrayal but a more subtle, threatening rumbling. This middle section demonstrates the skills Hervey possessed as an orchestral scene painter. The calm returns and the music builds to a bright finale.
+            </p>
+
+            <p>
+              The most extensive review of &lsquo;Summer&rsquo; was given in <em>The Times</em> (26 September). It began by reminding the reader that three of the composer&apos;s tone poems have been given at previous Cardiff Festivals: these included <em>On the Heights</em> and <em>On the March</em>, both performed in 1902 and <em>In the East</em> which was premiered in 1904.
+            </p>
+
+            {/* Review 1: The Times */}
+            <blockquote className="my-8 p-6 sm:p-8 bg-white border-l-4 border-amber-800 border-y border-r border-stone-200 rounded-r shadow-xs space-y-4">
+              <p className="font-serif italic text-base sm:text-lg text-stone-800 leading-relaxed">
+                &ldquo;The second part of the concert began with a new overture by Mr. Arthur Hervey, three of whose characteristic tone-pictures have been given for the first time at previous Cardiff festivals. The new work is entitled &quot;Summer,&quot; and is a remarkably successful piece of landscape-painting in music. Two beautiful themes of voluptuous warmth are interwoven with great skill, and the section which represents a thunderstorm does so in an unconventional manner, which never once suggests the &quot;Pastoral Symphony,&quot; and surely deserves credit for not suggesting it, especially since the key of both is F major. Not only is the scoring rich and scholarly, but the structure of the piece is interesting and the manipulation of the themes most skilful. The composer conducted a very successful performance.&rdquo;
+              </p>
+              <footer className="mt-4 pt-3 border-t border-stone-200 text-xs font-mono uppercase tracking-widest text-amber-900 font-semibold">
+                — The Times (26 September 1907)
+              </footer>
+            </blockquote>
+
+            <p>
+              <em>The Observer</em> (29 September) was less enthusiastic:
+            </p>
+
+            {/* Review 2: The Observer */}
+            <blockquote className="my-8 p-6 sm:p-8 bg-white border-l-4 border-amber-800 border-y border-r border-stone-200 rounded-r shadow-xs space-y-4">
+              <p className="font-serif italic text-base sm:text-lg text-stone-800 leading-relaxed">
+                &ldquo;Mr Arthur Hervey who has so often given proof of his freshness and melodic gifts in the &lsquo;descriptive overture&rsquo; style, was not heard at his best in &lsquo;Summer&rsquo;. It contains some graceful writing it is true, but it lacked the character which made his &lsquo;Youth&rsquo; and &lsquo;On the Heights&rsquo; so pleasing and, in a sense, distinctive.&rdquo;
+              </p>
+              <footer className="mt-4 pt-3 border-t border-stone-200 text-xs font-mono uppercase tracking-widest text-amber-900 font-semibold">
+                — The Observer (29 September 1907)
+              </footer>
+            </blockquote>
+
+            <p>
+              Its musical landscape evokes the warmth and stillness of a summer day, interrupted by a thunderstorm.
+            </p>
+
+            <p>
+              The London performance took place on 18 February 1909, conducted by Hervey.
+            </p>
+
+            {/* Manuscript Excerpt */}
+            <div className="my-8 pt-4">
+              <figure className="max-w-2xl mx-auto p-2.5 bg-white border-2 border-stone-300 rounded-lg shadow-sm text-center">
+                <div
+                  className="overflow-hidden rounded border border-stone-300 bg-stone-100 aspect-[16/9] cursor-pointer group relative"
+                  onClick={() => setActiveImageModal('/assets/aistudio/hervey_summer_manuscript.jpg')}
+                  title="Click to enlarge Summer manuscript score"
+                >
+                  <img
+                    src="/assets/aistudio/hervey_summer_manuscript.jpg"
+                    alt="Summer manuscript excerpt in Arthur Hervey's hand"
+                    className="w-full h-full object-cover filter grayscale group-hover:scale-102 transition-transform duration-200"
+                  />
+                  <div className="absolute inset-0 bg-stone-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="bg-stone-900/90 text-white text-xs px-2.5 py-1 rounded-full flex items-center gap-1 font-sans">
+                      <ZoomIn className="w-3.5 h-3.5" /> Enlarge
+                    </span>
+                  </div>
+                </div>
+                <figcaption className="mt-2 text-xs font-serif text-stone-600 italic">
+                  Summer manuscript score excerpt
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        {/* Bottom Back-to-Top Button */}
+        <div className="mt-14 pt-8 border-t border-stone-300 text-center">
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 350, behavior: 'smooth' })}
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white hover:bg-stone-100 text-stone-800 border border-stone-300 rounded-lg font-serif text-sm font-semibold shadow-2xs hover:shadow-xs transition-all cursor-pointer"
+          >
+            <ArrowUp className="w-4 h-4 text-amber-900" />
+            <span>Return to top of Arthur Hervey post</span>
+          </button>
+        </div>
+
+        {/* Image Modal for Full-screen Enlarge */}
+        {activeImageModal && (
+          <div
+            className="fixed inset-0 z-50 bg-stone-950/80 backdrop-blur-xs flex items-center justify-center p-4 cursor-pointer"
+            onClick={() => setActiveImageModal(null)}
+          >
+            <div
+              className="bg-white p-3 rounded-lg max-w-4xl max-h-[90vh] overflow-auto shadow-2xl relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={activeImageModal}
+                alt="Enlarged document or portrait"
+                className="w-full h-auto max-h-[80vh] object-contain mx-auto"
+              />
+              <div className="mt-3 text-right">
+                <button
+                  type="button"
+                  onClick={() => setActiveImageModal(null)}
+                  className="px-4 py-1.5 bg-stone-900 text-white text-xs font-serif rounded uppercase font-semibold hover:bg-stone-800 cursor-pointer"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </article>
+  );
+};

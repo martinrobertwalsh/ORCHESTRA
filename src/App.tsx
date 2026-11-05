@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { HeroSection } from './components/HeroSection';
-import { FeaturedPost } from './components/FeaturedPost';
 import { PercyPittPost } from './components/PercyPittPost';
 import { ComposerModal } from './components/ComposerModal';
 import { WelcomeModal } from './components/WelcomeModal';
 import { ArchiveTab } from './components/ArchiveTab';
+import { ToFollowTab } from './components/ToFollowTab';
 import { Composer, MusicalTheme } from './types/composer';
 import { HARVEY_LOHR_SYMPHONY_3_THEME } from './data/composersData';
 import { orchestralPlayer } from './audio/orchestralEngine';
 import { Mail, Send, CheckCircle2, Library, Music, FolderArchive } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'home' | 'welcome' | 'archive' | 'contact'>('home');
-  const [selectedArticle, setSelectedArticle] = useState<'macfarren' | 'percy-pitt'>('percy-pitt');
+  const [activeTab, setActiveTab] = useState<'home' | 'welcome' | 'to-follow' | 'archive' | 'contact'>('home');
   const [isWelcomeModalOpen, setIsWelcomeModalOpen] = useState<boolean>(false);
   const [selectedComposer, setSelectedComposer] = useState<Composer | null>(null);
   const [currentTheme, setCurrentTheme] = useState<MusicalTheme>(HARVEY_LOHR_SYMPHONY_3_THEME);
@@ -34,7 +33,7 @@ export default function App() {
   const [contactMessage, setContactMessage] = useState('');
   const [contactSent, setContactSent] = useState(false);
 
-  const handleTabChange = (tab: 'home' | 'welcome' | 'archive' | 'contact') => {
+  const handleTabChange = (tab: 'home' | 'welcome' | 'to-follow' | 'archive' | 'contact') => {
     setActiveTab(tab);
     // Smooth scroll just under the image so the top of the selected tab is in view
     const heroHeight = window.innerHeight * 0.50;
@@ -87,52 +86,9 @@ export default function App() {
 
       {/* Main Tab Views */}
       <main className="flex-1">
-        {/* HOME TAB: Featured Composer Articles */}
+        {/* HOME TAB: Featured Composer Article (Percy Pitt) */}
         {activeTab === 'home' && (
-          <div>
-            {/* Article Selector Navigation Bar */}
-            <div className="w-full bg-[#F3EFEA] border-b border-stone-300 py-2.5 px-4 shadow-2xs">
-              <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2.5">
-                <span className="font-serif text-xs uppercase tracking-widest font-bold text-amber-950">
-                  Featured Composer Posts
-                </span>
-                <div className="flex flex-wrap items-center gap-2">
-                  <button
-                    onClick={() => {
-                      setSelectedArticle('percy-pitt');
-                      window.scrollTo({ top: 380, behavior: 'smooth' });
-                    }}
-                    className={`px-4 py-1.5 rounded font-serif text-xs sm:text-sm font-semibold tracking-wide transition-all cursor-pointer ${
-                      selectedArticle === 'percy-pitt'
-                        ? 'bg-stone-900 text-stone-50 shadow-xs ring-1 ring-stone-900/30'
-                        : 'bg-white text-stone-700 hover:bg-stone-100 hover:text-stone-950 border border-stone-300 shadow-2xs'
-                    }`}
-                  >
-                    Percy Pitt (1869–1932)
-                  </button>
-                  <button
-                    onClick={() => {
-                      setSelectedArticle('macfarren');
-                      window.scrollTo({ top: 380, behavior: 'smooth' });
-                    }}
-                    className={`px-4 py-1.5 rounded font-serif text-xs sm:text-sm font-semibold tracking-wide transition-all cursor-pointer ${
-                      selectedArticle === 'macfarren'
-                        ? 'bg-stone-900 text-stone-50 shadow-xs ring-1 ring-stone-900/30'
-                        : 'bg-white text-stone-700 hover:bg-stone-100 hover:text-stone-950 border border-stone-300 shadow-2xs'
-                    }`}
-                  >
-                    Walter Macfarren (1826–1905)
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {selectedArticle === 'percy-pitt' ? (
-              <PercyPittPost />
-            ) : (
-              <FeaturedPost />
-            )}
-          </div>
+          <PercyPittPost />
         )}
 
         {/* WELCOME TAB: Curator's Welcome & Historical Context */}
@@ -180,6 +136,11 @@ export default function App() {
               </div>
             </div>
           </div>
+        )}
+
+        {/* TO FOLLOW TAB: Arthur Hervey Card View (matching Walter Macfarren in Archive) */}
+        {activeTab === 'to-follow' && (
+          <ToFollowTab />
         )}
 
         {/* ARCHIVE TAB: Walter Macfarren Card View */}
