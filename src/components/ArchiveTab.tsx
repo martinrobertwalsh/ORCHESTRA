@@ -17,7 +17,7 @@ const ARCHIVE_ARTICLES: ArchiveArticle[] = [
     id: 'macfarren',
     name: 'Walter Macfarren',
     dates: '1826–1905',
-    image: '/assets/aistudio/photo_200faca6.jpg',
+    image: `${import.meta.env.BASE_URL}assets/aistudio/photo_200faca6.jpg`,
     quote: '“A symphony missing for over a hundred years, finally turns up”',
     notableWork: 'Symphony in B flat (1879)',
     tags: ['Walter Macfarren', 'Symphony in Bb', 'Royal Academy of Music', 'Philharmonic']

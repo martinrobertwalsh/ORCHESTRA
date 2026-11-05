@@ -50,7 +50,7 @@ export const PercyPittPost: React.FC = () => {
           <figure className="w-40 sm:w-44 md:w-48 shrink-0 mx-auto sm:mx-0 p-2.5 bg-white border-2 border-stone-300 rounded shadow-md text-center">
             <div className="overflow-hidden rounded border border-stone-300 bg-stone-100 aspect-3/4">
               <img
-                src="/assets/aistudio/percy_pitt_sharp.jpg"
+                src={`${import.meta.env.BASE_URL}assets/aistudio/percy_pitt_sharp.jpg`}
                 alt="Percy Pitt (1869–1932) - English composer, conductor, Director of Music at Covent Garden and the BBC"
                 className="w-full h-full object-cover object-top filter contrast-105"
                 referrerPolicy="no-referrer"
@@ -128,7 +128,7 @@ export const PercyPittPost: React.FC = () => {
               <div className="my-5 max-w-[280px] sm:max-w-[320px] mx-auto select-none cursor-default">
                 <div className="p-1.5 bg-[#F5ECDB] border border-[#D5CABB] rounded-xs shadow-2xs">
                   <img
-                    src="/assets/aistudio/elgar_joke_old_paper.jpg"
+                    src={`${import.meta.env.BASE_URL}assets/aistudio/elgar_joke_old_paper.jpg`}
                     alt="Autograph musical joke quotation from Percy Pitt to Edward Elgar"
                     className="w-full h-auto rounded-xs filter contrast-105 mix-blend-multiply pointer-events-none"
                     referrerPolicy="no-referrer"
@@ -181,7 +181,7 @@ export const PercyPittPost: React.FC = () => {
               aria-hidden="true"
             >
               <img
-                src="/assets/aistudio/elgar_blot_clean.png"
+                src={`${import.meta.env.BASE_URL}assets/aistudio/elgar_blot_clean.png`}
                 alt="Elgar's woful blot"
                 className="w-24 h-24 sm:w-28 sm:h-28 object-contain mix-blend-multiply opacity-90 pointer-events-none transform -rotate-6"
               />
@@ -311,11 +311,11 @@ export const PercyPittPost: React.FC = () => {
             <figure className="w-40 sm:w-48 md:w-52 shrink-0 mx-auto sm:mx-0 p-2.5 bg-white border-2 border-stone-300 rounded shadow-md text-center">
               <div
                 className="overflow-hidden rounded border border-stone-300 bg-stone-100 aspect-3/4 cursor-pointer group relative"
-                onClick={() => setActiveImageModal('/assets/aistudio/cover_a9587caf.jpg')}
+                onClick={() => setActiveImageModal(`${import.meta.env.BASE_URL}assets/aistudio/cover_a9587caf.jpg`)}
                 title="Click to enlarge Full Score title page"
               >
                 <img
-                  src="/assets/aistudio/cover_a9587caf.jpg"
+                  src={`${import.meta.env.BASE_URL}assets/aistudio/cover_a9587caf.jpg`}
                   alt="Percy Pitt - Coronation March Op. 21 Full Score Novello title page"
                   className="w-full h-full object-cover object-top group-hover:scale-102 transition-transform duration-200"
                 />
@@ -394,11 +394,11 @@ export const PercyPittPost: React.FC = () => {
             <figure className="my-8 max-w-md mx-auto bg-white border border-stone-200/90 rounded-lg p-2.5 sm:p-3 shadow-xs">
               <div
                 className="overflow-hidden rounded border border-stone-300 bg-stone-950 relative group cursor-pointer"
-                onClick={() => setActiveImageModal('/assets/aistudio/hall_slight_plus_89dff31e.png')}
+                onClick={() => setActiveImageModal(`${import.meta.env.BASE_URL}assets/aistudio/hall_slight_plus_89dff31e.png`)}
                 title="Click to enlarge photograph"
               >
                 <img
-                  src="/assets/aistudio/hall_slight_plus_89dff31e.png"
+                  src={`${import.meta.env.BASE_URL}assets/aistudio/hall_slight_plus_89dff31e.png`}
                   alt="Henry Wood and the Queen's Hall Orchestra on stage at Queen's Hall"
                   className="w-full h-auto object-cover filter contrast-105 group-hover:scale-[1.01] transition-transform duration-300"
                 />

@@ -61,11 +61,11 @@ export const ArthurHerveyPost: React.FC = () => {
             <figure className="w-40 sm:w-44 md:w-48 shrink-0 mx-auto sm:mx-0 p-2.5 bg-white border-2 border-stone-300 rounded shadow-md text-center">
               <div
                 className="overflow-hidden rounded border border-stone-300 bg-stone-100 aspect-3/4 cursor-pointer group relative"
-                onClick={() => setActiveImageModal('/assets/aistudio/arthur_hervey_portrait.jpg')}
+                onClick={() => setActiveImageModal(`${import.meta.env.BASE_URL}assets/aistudio/arthur_hervey_portrait.jpg`)}
                 title="Click to enlarge Arthur Hervey portrait"
               >
                 <img
-                  src="/assets/aistudio/arthur_hervey_portrait.jpg"
+                  src={`${import.meta.env.BASE_URL}assets/aistudio/arthur_hervey_portrait.jpg`}
                   alt="Arthur Hervey (1855–1922)"
                   className="w-full h-full object-cover object-top filter grayscale group-hover:scale-102 transition-transform duration-200"
                 />
@@ -92,11 +92,11 @@ export const ArthurHerveyPost: React.FC = () => {
             <figure className="w-full sm:w-72 md:w-80 shrink-0 mx-auto sm:mx-0 p-2.5 bg-white border-2 border-stone-300 rounded shadow-md text-center">
               <div
                 className="overflow-hidden rounded border border-stone-300 bg-stone-100 aspect-[16/9] cursor-pointer group relative"
-                onClick={() => setActiveImageModal('/assets/aistudio/killiane_castle.jpg')}
+                onClick={() => setActiveImageModal(`${import.meta.env.BASE_URL}assets/aistudio/killiane_castle.jpg`)}
                 title="Click to enlarge Killiane Castle"
               >
                 <img
-                  src="/assets/aistudio/killiane_castle.jpg"
+                  src={`${import.meta.env.BASE_URL}assets/aistudio/killiane_castle.jpg`}
                   alt="Killiane Castle, Wexford"
                   className="w-full h-full object-cover filter grayscale group-hover:scale-102 transition-transform duration-200"
                 />
@@ -132,11 +132,11 @@ export const ArthurHerveyPost: React.FC = () => {
               <figure className="w-32 shrink-0 mx-auto sm:mx-0 text-center">
                 <div
                   className="overflow-hidden rounded border border-stone-300 bg-stone-100 aspect-square cursor-pointer group relative"
-                  onClick={() => setActiveImageModal('/assets/aistudio/hervey_plaque.jpg')}
+                  onClick={() => setActiveImageModal(`${import.meta.env.BASE_URL}assets/aistudio/hervey_plaque.jpg`)}
                   title="Click to enlarge Hervey Plaque"
                 >
                   <img
-                    src="/assets/aistudio/hervey_plaque.jpg"
+                    src={`${import.meta.env.BASE_URL}assets/aistudio/hervey_plaque.jpg`}
                     alt="Arthur Hervey carved marble relief portrait at Royal Academy of Music"
                     className="w-full h-full object-cover filter grayscale group-hover:scale-102 transition-transform duration-200"
                   />
@@ -308,11 +308,11 @@ export const ArthurHerveyPost: React.FC = () => {
               <figure className="max-w-2xl mx-auto p-2.5 bg-white border-2 border-stone-300 rounded-lg shadow-sm text-center">
                 <div
                   className="overflow-hidden rounded border border-stone-300 bg-stone-100 aspect-[16/9] cursor-pointer group relative"
-                  onClick={() => setActiveImageModal('/assets/aistudio/hervey_summer_manuscript.jpg')}
+                  onClick={() => setActiveImageModal(`${import.meta.env.BASE_URL}assets/aistudio/hervey_summer_manuscript.jpg`)}
                   title="Click to enlarge Summer manuscript score"
                 >
                   <img
-                    src="/assets/aistudio/hervey_summer_manuscript.jpg"
+                    src={`${import.meta.env.BASE_URL}assets/aistudio/hervey_summer_manuscript.jpg`}
                     alt="Summer manuscript excerpt in Arthur Hervey's hand"
                     className="w-full h-full object-cover filter grayscale group-hover:scale-102 transition-transform duration-200"
                   />

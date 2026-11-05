@@ -17,7 +17,7 @@ const TO_FOLLOW_ARTICLES: ToFollowArticle[] = [
     id: 'arthur-hervey',
     name: 'Arthur Hervey',
     dates: '1855–1922',
-    image: '/assets/aistudio/arthur_hervey_portrait.jpg',
+    image: `${import.meta.env.BASE_URL}assets/aistudio/arthur_hervey_portrait.jpg`,
     quote: '“Writer, critic, promoter and composer”',
     notableWork: 'Summer — Tone Poem (1907)',
     tags: ['Arthur Hervey', 'Summer', 'Tone Poem', 'Orchestra', 'Cardiff Festival']
