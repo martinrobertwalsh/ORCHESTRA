@@ -86,12 +86,19 @@ export const ToFollowTab: React.FC = () => {
           >
             {/* Portrait Container - cleanly proportioned photo on left with TO FOLLOW stamp to right of photo */}
             <div className="p-5 bg-stone-100/70 border-b border-stone-200/80 flex items-center justify-between gap-4">
-              {/* Photo */}
-              <div className="w-36 sm:w-40 aspect-3/4 overflow-hidden rounded border border-stone-300 bg-white shadow-xs shrink-0">
+              {/* Photo - clickable to read article, no enlarge */}
+              <div
+                onClick={() => {
+                  setShowFullArticle(true);
+                  window.scrollTo({ top: 380, behavior: 'smooth' });
+                }}
+                className="w-36 sm:w-40 aspect-3/4 overflow-hidden rounded border border-stone-300 hover:border-amber-800 bg-white shadow-xs shrink-0 cursor-pointer transition-all duration-200 group/portrait"
+                title={`Open article on ${article.name}`}
+              >
                 <img
                   src={article.image}
                   alt={`${article.name} (${article.dates})`}
-                  className="w-full h-full object-cover object-top filter grayscale contrast-105 group-hover:scale-102 transition-transform duration-300"
+                  className="w-full h-full object-cover object-top filter grayscale contrast-105 group-hover/portrait:scale-105 transition-transform duration-300"
                 />
               </div>
 

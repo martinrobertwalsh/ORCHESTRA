@@ -129,6 +129,65 @@ export const SymphonyWorkPage: React.FC<SymphonyWorkPageProps> = ({ onBack }) =>
             Completed in August 1879 the work is conservative in style for its time. Despite this it received a number of performances in some surprising places. These are noted, with dates, on the inside cover of the score.
           </p>
 
+          {/* Movement by Movement Breakdown */}
+          <div className="border-l-4 border-amber-800 pl-4 sm:pl-5 py-1 my-6 space-y-5 font-bold text-stone-900 leading-relaxed">
+            <div>
+              <button
+                type="button"
+                onClick={() => handleJumpToMovement(0, '1st mov')}
+                className="font-bold underline underline-offset-4 text-stone-900 hover:text-amber-900 transition-colors cursor-pointer text-left font-serif text-lg sm:text-xl block"
+                title="Jump to 1st movement in audio player"
+              >
+                1st movement &ndash; Andante Lento : Allegro assai
+              </button>
+              <p className="mt-1 text-stone-900 font-bold">
+                String pizzicato in the slow introduction followed by a standard allegro with some erratic key changes in the development.
+              </p>
+            </div>
+
+            <div>
+              <button
+                type="button"
+                onClick={() => handleJumpToMovement(480, '2nd mov')}
+                className="font-bold underline underline-offset-4 text-stone-900 hover:text-amber-900 transition-colors cursor-pointer text-left font-serif text-lg sm:text-xl block"
+                title="Jump to 2nd movement in audio player"
+              >
+                2nd movement &ndash; Andante poco Allegretto
+              </button>
+              <p className="mt-1 text-stone-900 font-bold">
+                In the manner of an intermezzo featuring the woodwind predominately.
+              </p>
+            </div>
+
+            <div>
+              <button
+                type="button"
+                onClick={() => handleJumpToMovement(760, '3rd mov')}
+                className="font-bold underline underline-offset-4 text-stone-900 hover:text-amber-900 transition-colors cursor-pointer text-left font-serif text-lg sm:text-xl block"
+                title="Jump to 3rd movement in audio player"
+              >
+                3rd mov: Scherzo &ndash; Allegretto Leggiero
+              </button>
+              <p className="mt-1 text-stone-900 font-bold">
+                A scherzo without a trio. Clarinets skip busily along with the main theme.
+              </p>
+            </div>
+
+            <div>
+              <button
+                type="button"
+                onClick={() => handleJumpToMovement(1045, '4th mov')}
+                className="font-bold underline underline-offset-4 text-stone-900 hover:text-amber-900 transition-colors cursor-pointer text-left font-serif text-lg sm:text-xl block"
+                title="Jump to 4th movement in audio player"
+              >
+                4th movement &ndash; Andante Lento: Allegro con Maesta
+              </button>
+              <p className="mt-1 text-stone-900 font-bold">
+                The opening is a repeat of the 1st movement opening but now tutti. Material from the 2nd and 3rd movements is also reworked. There&apos;s a definite feel of a Finale in this Allegro.
+              </p>
+            </div>
+          </div>
+
           {/* Autograph Score Performance Dates Row with Image on Left & Button on Right */}
           <div className="my-6 flex flex-col sm:flex-row items-center justify-start gap-5">
             <figure className="w-full sm:w-auto max-w-sm p-2.5 bg-white border-2 border-stone-300 rounded shadow-xs text-center shrink-0">

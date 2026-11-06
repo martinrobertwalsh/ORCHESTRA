@@ -8,7 +8,7 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ activeTab, onTabChange, onOpenWelcome }) => {
   return (
-    <div className="w-full flex flex-col">
+    <>
       {/* Queen's Hall Historic Hero Photo (30% off top only, bottom anchored) */}
       <section className="relative w-full h-[46vh] sm:h-[50vh] lg:h-[55vh] min-h-[336px] flex items-center justify-center overflow-hidden bg-[#141210]">
         {/* Background Queen's Hall Photo (object-bottom anchors the bottom, cropping strictly from top) */}
@@ -45,8 +45,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ activeTab, onTabChange
         </div>
       </section>
 
-      {/* Buttons Directly Under Image: HOME · WELCOME · TO FOLLOW · ARCHIVE · CONTACT */}
-      <nav className="w-full bg-[#FAF8F5] border-y border-stone-300 py-3 sm:py-3.5 px-4 sticky top-0 z-40 shadow-xs backdrop-blur-sm">
+      {/* Buttons Directly Under Image: HOME · WELCOME · TO FOLLOW · ARCHIVE · CONTACT - Sticky at top of page while scrolling */}
+      <nav className="w-full bg-[#FAF8F5]/95 backdrop-blur-md border-y border-stone-300 py-3 sm:py-3.5 px-4 sticky top-0 z-50 shadow-md">
         <div className="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 md:gap-6">
           <button
             onClick={() => onTabChange('home')}
@@ -96,6 +96,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ activeTab, onTabChange
           </button>
         </div>
       </nav>
-    </div>
+    </>
   );
 };
