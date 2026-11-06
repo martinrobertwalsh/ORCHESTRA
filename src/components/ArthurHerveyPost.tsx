@@ -27,18 +27,18 @@ export const ArthurHerveyPost: React.FC = () => {
       <div className="max-w-4xl mx-auto">
         {/* Header Bar: Featured Post label on left, Jump to Audio right-justified on same level */}
         <div className="flex items-center justify-between mb-3">
-          <span className="font-mono text-xs sm:text-sm font-semibold tracking-widest text-stone-600 uppercase">
+          <span className="font-mono text-sm sm:text-base font-semibold tracking-widest text-stone-600 uppercase">
             FEATURED POST
           </span>
 
           <button
             type="button"
             onClick={() => scrollToSection('hervey-summer-workpage')}
-            className="inline-flex items-center gap-1.5 font-mono text-xs sm:text-sm font-semibold tracking-widest text-stone-600 hover:text-amber-900 uppercase transition-colors cursor-pointer group"
+            className="inline-flex items-center gap-2 font-mono text-sm sm:text-base font-semibold tracking-widest text-stone-600 hover:text-amber-900 uppercase transition-colors cursor-pointer group"
             title="Jump to audio"
           >
             <span>JUMP TO AUDIO</span>
-            <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-900 group-hover:scale-110 transition-transform" />
+            <Volume2 className="w-4 h-4 sm:w-5 sm:h-5 text-amber-900 group-hover:scale-110 transition-transform" />
           </button>
         </div>
 
@@ -251,20 +251,20 @@ export const ArthurHerveyPost: React.FC = () => {
           {/* Narrative Flow & Contemporary Reviews */}
           <div className="font-serif text-stone-800 text-lg sm:text-xl leading-relaxed space-y-6 mt-6 text-left">
             <p className="first-letter:text-5xl first-letter:font-bold first-letter:text-stone-900 first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:leading-none">
-              This is arguably Hervey&apos;s finest orchestral work. It comes five years after the <em>Two Tone Pictures</em> and the Concert Overture <em>Youth</em>. It was one of a series of commissions from the Cardiff Festival and it was first performed on the opening day, 25th September, 1907. The London Symphony Orchestra was conducted by Frederic Cowen.
+              This is arguably Hervey&apos;s finest orchestral work. It comes five years after the <em>Two Tone Pictures</em> and the Concert Overture <em>Youth</em>. It was one of a series of commissions from the Cardiff Festival and it was first performed on the opening day, 25th September, 1907 with Hervey himself conducting the London Symphony Orchestra.
             </p>
 
-            <p>
-              The work starts gently and builds to a glorious climax with bright, dazzling fanfare like flourishes. A storm begins{' '}
+            <p className="border-l-4 border-amber-800 pl-4 sm:pl-5 py-1 font-bold text-stone-900 leading-relaxed">
+              Its musical landscape evokes the warmth and stillness of a summer day, interrupted by a thunderstorm. The work starts gently and builds to a glorious climax with bright, dazzling fanfare like flourishes. A storm begins{' '}
               <button
                 type="button"
                 onClick={() => seekAudio(200)}
-                className="whitespace-nowrap font-['Arial',sans-serif] text-[0.78em] font-semibold text-amber-900 hover:text-amber-700 transition-colors cursor-pointer align-baseline"
+                className="whitespace-nowrap font-['Arial',sans-serif] text-[0.78em] font-bold text-amber-900 hover:text-amber-700 transition-colors cursor-pointer align-baseline"
                 title="Jump to 03:20 in Summer audio"
               >
                 (03:20)
               </button>{' '}
-              to stir but it&apos;s not an over-dramatic storm portrayal but a more subtle, threatening rumbling. This middle section demonstrates the skills Hervey possessed as an orchestral scene painter. The calm returns and the music builds to a bright finale.
+              to stir but it&apos;s not an over-dramatic portrayal but a more subtle, threatening rumbling. This middle section demonstrates the skills Hervey possessed as an orchestral scene painter. The calm returns and the music builds to a bright finale.
             </p>
 
             <p>
@@ -296,11 +296,21 @@ export const ArthurHerveyPost: React.FC = () => {
             </blockquote>
 
             <p>
-              Its musical landscape evokes the warmth and stillness of a summer day, interrupted by a thunderstorm.
+              <em>The Musical Times</em> was more positive:
             </p>
 
+            {/* Review 3: The Musical Times */}
+            <blockquote className="my-8 p-6 sm:p-8 bg-white border-l-4 border-amber-800 border-y border-r border-stone-200 rounded-r shadow-xs space-y-4">
+              <p className="font-serif italic text-base sm:text-lg text-stone-800 leading-relaxed">
+                &ldquo;Two of the octet of novelties were presented in the second part of the programme. The first of these was a Tone-poem for orchestra entitled &lsquo;Summer,&rsquo; composed expressly for the occasion and conducted by Mr. Arthur Hervey. Mainly constructed on two themes, &lsquo;Summer&rsquo; and &lsquo;Nature,&rsquo; Mr. Hervey’s latest work gives further proof of his poetic temperament and creative gifts. Eminently refined in his orchestration, he never over-colours his picture, though—as in the storm episode in this work—he well knows how to paint on a large canvas, yet always with artistic restraint. Admirably played by the orchestra, the Tone-poem and its composer received a cordial reception.&rdquo;
+              </p>
+              <footer className="mt-4 pt-3 border-t border-stone-200 text-xs font-mono uppercase tracking-widest text-amber-900 font-semibold">
+                — The Musical Times (1907)
+              </footer>
+            </blockquote>
+
             <p>
-              The London performance took place on 18 February 1909, conducted by Hervey.
+              A second performance took place in London on 18 February 1909, again conducted by Hervey.
             </p>
 
             {/* Manuscript Excerpt */}

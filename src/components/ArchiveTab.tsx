@@ -113,15 +113,26 @@ export const ArchiveTab: React.FC = () => {
         {filteredArticles.map((article) => (
           <article
             key={article.id}
-            className="bg-white rounded-lg border border-stone-200/90 overflow-hidden shadow-2xs hover:shadow-md transition-shadow flex flex-col group"
+            onClick={() => {
+              setSelectedArticleId(article.id);
+              window.scrollTo({ top: 380, behavior: 'smooth' });
+            }}
+            className="bg-white rounded-lg border border-stone-200/90 overflow-hidden shadow-2xs hover:shadow-md transition-shadow flex flex-col group cursor-pointer"
           >
-            {/* Portrait Container - cleanly proportioned, left justified, no text overlays */}
+            {/* Portrait Container - cleanly proportioned, left justified, clickable to open article */}
             <div className="p-5 bg-stone-100/70 border-b border-stone-200/80 flex justify-start items-center">
-              <div className="w-36 sm:w-40 aspect-3/4 overflow-hidden rounded border border-stone-300 bg-white shadow-xs">
+              <div
+                onClick={() => {
+                  setSelectedArticleId(article.id);
+                  window.scrollTo({ top: 380, behavior: 'smooth' });
+                }}
+                className="w-36 sm:w-40 aspect-3/4 overflow-hidden rounded border border-stone-300 hover:border-amber-800 bg-white shadow-xs cursor-pointer transition-all duration-200 group/portrait"
+                title={`Open article on ${article.name}`}
+              >
                 <img
                   src={article.image}
                   alt={`${article.name} (${article.dates})`}
-                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-102 filter grayscale contrast-105"
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover/portrait:scale-105 filter grayscale contrast-105"
                 />
               </div>
             </div>
@@ -158,7 +169,8 @@ export const ArchiveTab: React.FC = () => {
               {/* Actions footer */}
               <div className="mt-5 pt-3 border-t border-stone-200/80 flex items-center justify-between">
                 <button
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.stopPropagation();
                     setSelectedArticleId(article.id);
                     window.scrollTo({ top: 380, behavior: 'smooth' });
                   }}

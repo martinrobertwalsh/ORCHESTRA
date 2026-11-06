@@ -60,18 +60,18 @@ export const FeaturedPost: React.FC = () => {
       <div className="max-w-4xl mx-auto">
         {/* Header Bar: Featured Post label on left, Jump to Audio right-justified on same level */}
         <div className="flex items-center justify-between mb-3">
-          <span className="font-mono text-xs sm:text-sm font-semibold tracking-widest text-stone-600 uppercase">
+          <span className="font-mono text-sm sm:text-base font-semibold tracking-widest text-stone-600 uppercase">
             FEATURED POST
           </span>
 
           <button
             type="button"
             onClick={() => scrollToSection('macfarren-score-samples')}
-            className="inline-flex items-center gap-1.5 font-mono text-xs sm:text-sm font-semibold tracking-widest text-stone-600 hover:text-amber-900 uppercase transition-colors cursor-pointer group"
+            className="inline-flex items-center gap-2 font-mono text-sm sm:text-base font-semibold tracking-widest text-stone-600 hover:text-amber-900 uppercase transition-colors cursor-pointer group"
             title="Jump to audio"
           >
             <span>JUMP TO AUDIO</span>
-            <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-900 group-hover:scale-110 transition-transform" />
+            <Volume2 className="w-4 h-4 sm:w-5 sm:h-5 text-amber-900 group-hover:scale-110 transition-transform" />
           </button>
         </div>
 
@@ -92,13 +92,22 @@ export const FeaturedPost: React.FC = () => {
           {/* Walter Macfarren Photo on Left & First Paragraph to Right */}
           <div className="my-8 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
             <figure className="w-40 sm:w-44 md:w-48 shrink-0 mx-auto sm:mx-0 p-2.5 bg-white border-2 border-stone-300 rounded shadow-md text-center">
-              <div className="overflow-hidden rounded border border-stone-300 bg-stone-100 aspect-3/4">
+              <div
+                className="overflow-hidden rounded border border-stone-300 bg-stone-100 aspect-3/4 cursor-pointer group relative"
+                onClick={() => setActiveImageModal(`${import.meta.env.BASE_URL}assets/aistudio/photo_200faca6.jpg`)}
+                title="Click to enlarge Walter Macfarren portrait"
+              >
                 <img
                   src={`${import.meta.env.BASE_URL}assets/aistudio/photo_200faca6.jpg`}
                   alt="Walter Macfarren (1826–1905) - English composer, pianist, and professor at the Royal Academy of Music"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-top group-hover:scale-102 transition-transform duration-200"
                   referrerPolicy="no-referrer"
                 />
+                <div className="absolute inset-0 bg-stone-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="bg-stone-900/90 text-white text-xs px-2.5 py-1 rounded-full flex items-center gap-1 font-sans">
+                    <ZoomIn className="w-3.5 h-3.5" /> Enlarge
+                  </span>
+                </div>
               </div>
               <figcaption className="mt-2.5 font-serif font-bold text-stone-900 text-sm sm:text-base tracking-wide">
                 Walter Macfarren
@@ -294,6 +303,65 @@ export const FeaturedPost: React.FC = () => {
             <p>
               Completed in August 1879 the work is conservative in style for its time. Compared to Stanford&apos;s and Parry&apos;s 1st Symphonies from the same time it&apos;s a lightweight offering but it has some innovative touches such as the string pizzicato which dominate the slow introduction to the Allegro in the first movement.
             </p>
+
+            {/* Movement by Movement Breakdown */}
+            <div className="border-l-4 border-amber-800 pl-4 sm:pl-5 py-1 my-6 space-y-5 font-bold text-stone-900 leading-relaxed">
+              <div>
+                <button
+                  type="button"
+                  onClick={() => handleJumpToMovement(0, '1st mov')}
+                  className="font-bold underline underline-offset-4 text-stone-900 hover:text-amber-900 transition-colors cursor-pointer text-left font-serif text-lg sm:text-xl block"
+                  title="Jump to 1st movement in audio player"
+                >
+                  1st movement &ndash; Andante Lento : Allegro assai
+                </button>
+                <p className="mt-1 text-stone-900 font-bold">
+                  String pizzicato in the slow introduction followed by a standard allegro with some erratic key changes in the development.
+                </p>
+              </div>
+
+              <div>
+                <button
+                  type="button"
+                  onClick={() => handleJumpToMovement(480, '2nd mov')}
+                  className="font-bold underline underline-offset-4 text-stone-900 hover:text-amber-900 transition-colors cursor-pointer text-left font-serif text-lg sm:text-xl block"
+                  title="Jump to 2nd movement in audio player"
+                >
+                  2nd movement &ndash; Andante poco Allegretto
+                </button>
+                <p className="mt-1 text-stone-900 font-bold">
+                  In the manner of an intermezzo featuring the woodwind predominately.
+                </p>
+              </div>
+
+              <div>
+                <button
+                  type="button"
+                  onClick={() => handleJumpToMovement(760, '3rd mov')}
+                  className="font-bold underline underline-offset-4 text-stone-900 hover:text-amber-900 transition-colors cursor-pointer text-left font-serif text-lg sm:text-xl block"
+                  title="Jump to 3rd movement in audio player"
+                >
+                  3rd mov: Scherzo &ndash; Allegretto Leggiero
+                </button>
+                <p className="mt-1 text-stone-900 font-bold">
+                  A scherzo without a trio. Clarinets skip busily along with the main theme.
+                </p>
+              </div>
+
+              <div>
+                <button
+                  type="button"
+                  onClick={() => handleJumpToMovement(1045, '4th mov')}
+                  className="font-bold underline underline-offset-4 text-stone-900 hover:text-amber-900 transition-colors cursor-pointer text-left font-serif text-lg sm:text-xl block"
+                  title="Jump to 4th movement in audio player"
+                >
+                  4th movement &ndash; Andante Lento: Allegro con Maesta
+                </button>
+                <p className="mt-1 text-stone-900 font-bold">
+                  The opening is a repeat of the 1st movement opening but now tutti. Material from the 2nd and 3rd movements is also reworked. There&apos;s a definite feel of a Finale in this Allegro.
+                </p>
+              </div>
+            </div>
 
             <p>
               The premi&egrave;re of the symphony was in Brighton. Walter in his autobiography recounts an enthusiastic reception.
