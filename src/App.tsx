@@ -32,14 +32,20 @@ export default function App() {
   const [contactSubject, setContactSubject] = useState('Score Request');
   const [contactMessage, setContactMessage] = useState('');
   const [contactSent, setContactSent] = useState(false);
+  const [toFollowKey, setToFollowKey] = useState<number>(0);
+  const [archiveKey, setArchiveKey] = useState<number>(0);
 
   const handleTabChange = (tab: 'home' | 'welcome' | 'to-follow' | 'archive' | 'contact') => {
     setActiveTab(tab);
+    if (tab === 'to-follow') {
+      setToFollowKey((prev) => prev + 1);
+    }
+    if (tab === 'archive') {
+      setArchiveKey((prev) => prev + 1);
+    }
     // Smooth scroll just under the image so the top of the selected tab is in view
     const heroHeight = window.innerHeight * 0.50;
-    if (window.scrollY > heroHeight) {
-      window.scrollTo({ top: heroHeight - 60, behavior: 'smooth' });
-    }
+    window.scrollTo({ top: heroHeight - 60, behavior: 'smooth' });
   };
 
   const handleSearchFromFolder = (composerName: string) => {
@@ -138,14 +144,14 @@ export default function App() {
           </div>
         )}
 
-        {/* TO FOLLOW TAB: Arthur Hervey Card View (matching Walter Macfarren in Archive) */}
+        {/* TO FOLLOW TAB: Arthur Hervey, Norman O'Neill, Percy Godfrey, Tobias Matthay */}
         {activeTab === 'to-follow' && (
-          <ToFollowTab />
+          <ToFollowTab key={toFollowKey} />
         )}
 
         {/* ARCHIVE TAB: Walter Macfarren Card View */}
         {activeTab === 'archive' && (
-          <ArchiveTab />
+          <ArchiveTab key={archiveKey} />
         )}
 
         {/* CONTACT TAB: Direct Inquiry Form */}

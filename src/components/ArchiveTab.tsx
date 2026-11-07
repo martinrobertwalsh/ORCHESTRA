@@ -39,7 +39,7 @@ export const ArchiveTab: React.FC = () => {
     );
   });
 
-  if (selectedArticleId) {
+  if (selectedArticleId === 'macfarren') {
     return (
       <div className="space-y-4">
         {/* Back to Archive Cards bar */}

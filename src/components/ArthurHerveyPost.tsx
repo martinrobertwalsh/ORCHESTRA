@@ -1,8 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { ARTHUR_HERVEY_ORCHESTRAL_WORKS } from '../data/herveyData';
-import { Volume2, ArrowUp, ZoomIn, X } from 'lucide-react';
+import { Volume2, ArrowUp, ZoomIn, X, ArrowLeft } from 'lucide-react';
 
-export const ArthurHerveyPost: React.FC = () => {
+interface ArthurHerveyPostProps {
+  onBack?: () => void;
+}
+
+export const ArthurHerveyPost: React.FC<ArthurHerveyPostProps> = ({ onBack }) => {
   const [activeImageModal, setActiveImageModal] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -25,11 +29,24 @@ export const ArthurHerveyPost: React.FC = () => {
   return (
     <article id="arthur-hervey-post" className="w-full bg-[#FAF8F5] text-stone-900 py-12 px-4 sm:px-6 lg:px-8 selection:bg-amber-200 selection:text-stone-900">
       <div className="max-w-4xl mx-auto">
-        {/* Header Bar: Featured Post label on left, Jump to Audio right-justified on same level */}
+        {/* Header Bar: Post category label on left, Jump to Audio right-justified on same level */}
         <div className="flex items-center justify-between mb-3">
-          <span className="font-mono text-sm sm:text-base font-semibold tracking-widest text-stone-600 uppercase">
-            FEATURED POST
-          </span>
+          <div className="flex items-center gap-2">
+            {onBack && (
+              <button
+                type="button"
+                onClick={onBack}
+                className="inline-flex items-center gap-1.5 font-mono text-xs sm:text-sm font-semibold tracking-wider text-stone-600 hover:text-amber-900 uppercase transition-colors cursor-pointer mr-2"
+                title="Back to To Follow"
+              >
+                <ArrowLeft className="w-3.5 h-3.5 text-amber-900" />
+                <span>To Follow</span>
+              </button>
+            )}
+            <span className="font-mono text-sm sm:text-base font-semibold tracking-widest text-stone-600 uppercase">
+              ARTICLE TO FOLLOW
+            </span>
+          </div>
 
           <button
             type="button"
@@ -226,21 +243,13 @@ export const ArthurHerveyPost: React.FC = () => {
               Arthur Hervey &mdash; Summer (Tone Poem)
             </h2>
 
-            {/* Audio Box */}
-            <div className="max-w-xl mx-auto mt-3 p-4 bg-white border-2 border-stone-300 rounded-lg shadow-xs">
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 mb-2">
-                <span className="font-serif font-bold text-sm tracking-wider uppercase text-[#8b1e22]">
-                  SUMMER - TONE POEM (1907)
-                </span>
-                <span className="font-mono text-xs text-stone-500">
-                  Cardiff Festival Commission
-                </span>
-              </div>
+            {/* Audio player directly below title */}
+            <div className="max-w-xl mx-auto mt-3">
               <audio
                 ref={audioRef}
                 controls
                 preload="metadata"
-                className="w-full h-11 accent-amber-900 rounded focus:outline-none"
+                className="w-full h-11 accent-amber-900 rounded focus:outline-none shadow-2xs"
                 src="https://raw.githubusercontent.com/martinrobertwalsh/MP3FreddieWalsh/main/Hervey/Summer.mp3"
               >
                 Your browser does not support the audio element.
@@ -255,7 +264,7 @@ export const ArthurHerveyPost: React.FC = () => {
             </p>
 
             <p className="border-l-4 border-amber-800 pl-4 sm:pl-5 py-1 font-bold text-stone-900 leading-relaxed">
-              Its musical landscape evokes the warmth and stillness of a summer day, interrupted by a thunderstorm. The work starts gently and builds to a glorious climax with bright, dazzling fanfare like flourishes. A storm begins{' '}
+              Its musical landscape evokes the warmth and stillness of a summer day, interrupted by a thunderstorm. The work starts gently and builds to a glorious climax with bright, dazzling fanfare like flourishes. A storm begins to stir.{' '}
               <button
                 type="button"
                 onClick={() => seekAudio(200)}
@@ -264,7 +273,7 @@ export const ArthurHerveyPost: React.FC = () => {
               >
                 (03:20)
               </button>{' '}
-              to stir but it&apos;s not an over-dramatic portrayal but a more subtle, threatening rumbling. This middle section demonstrates the skills Hervey possessed as an orchestral scene painter. The calm returns and the music builds to a bright finale.
+              It&apos;s not an especially dramatic portrayal but a more subtle, threatening rumbling. This middle section shows, very clearly, the skills Hervey possessed as an orchestral scene painter. The calm returns and the music builds to a bright finale.
             </p>
 
             <p>
@@ -340,16 +349,26 @@ export const ArthurHerveyPost: React.FC = () => {
           </div>
         </section>
 
-        {/* Bottom Back-to-Top Button */}
-        <div className="mt-14 pt-8 border-t border-stone-300 text-center">
+        {/* Bottom Navigation Buttons */}
+        <div className="mt-14 pt-8 border-t border-stone-300 flex flex-wrap items-center justify-center gap-3 text-center">
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 350, behavior: 'smooth' })}
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-white hover:bg-stone-100 text-stone-800 border border-stone-300 rounded-lg font-serif text-sm font-semibold shadow-2xs hover:shadow-xs transition-all cursor-pointer"
           >
             <ArrowUp className="w-4 h-4 text-amber-900" />
-            <span>Return to top of Arthur Hervey post</span>
+            <span>Return to top</span>
           </button>
+          {onBack && (
+            <button
+              type="button"
+              onClick={onBack}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-stone-900 hover:bg-stone-800 text-stone-100 rounded-lg font-serif text-sm font-semibold shadow-2xs transition-all cursor-pointer"
+            >
+              <ArrowLeft className="w-4 h-4 text-amber-300" />
+              <span>Back to To Follow Cards</span>
+            </button>
+          )}
         </div>
 
         {/* Image Modal for Full-screen Enlarge */}

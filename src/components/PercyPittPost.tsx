@@ -328,7 +328,7 @@ export const PercyPittPost: React.FC = () => {
 
             <div className="border-l-4 border-amber-800 pl-4 sm:pl-5 py-1 space-y-3 font-bold text-stone-900 leading-relaxed">
               <p className="text-left">
-                Pitt&apos;s Coronation March is not in the classic, clearly defined ABA shape of marches such as Elgar&apos;s Pomp and Circumstance where a brisk lively first section is followed by a contrasting slower part with a sustained legato melody and then a da capo of the opening. Pitt chooses to begin softly and gradually build the music through a series of gradual crescendos. It&apos;s as if Pitt has chosen to focus less on the ceremonial pomp and more on the regal serenity.
+                Pitt&apos;s Coronation March is not in the classic, clearly defined ABA shape of marches such as Elgar&apos;s Pomp and Circumstance where a brisk, lively opening is followed by a contrasting slower part with a sustained legato melody and then a da capo of the opening. Pitt chooses to begin softly and gradually build the music through a series of gradual crescendos. It&apos;s as if Pitt has chosen to focus less on the ceremonial pomp and more on the regal serenity.
               </p>
               <p className="text-left">
                 At the end he takes the slow legato theme and scores it passionately for unison strings. This departure from the norm left the reviewers, and no doubt the audience, somewhat perplexed.
